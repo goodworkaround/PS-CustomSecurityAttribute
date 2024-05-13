@@ -4,7 +4,7 @@ A PowerShell module for working with custom security attributes at scale
 
 | Metadata | Information |
 | --- | --- |
-| Version | 1.0.0 |
+| Version | 1.0.1 |
 | Required modules | Microsoft.Graph.Authentication |
 | Author | Marius Solbakken Mellum |
 | Company name | Goodworkaround |
