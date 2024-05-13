@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/goodworkaround/PS-CustomSecurityAttribute/compare/v1.0.2...v1.0.3) (2024-05-13)
+
+
+### Bug Fixes
+
+* Fix connect-mggraph tenant parameter ([dcf72fa](https://github.com/goodworkaround/PS-CustomSecurityAttribute/commit/dcf72faa620ace813fec0fb3b6f6ebcd4a7e805d))
+* Switch error handling from Stop ([c4e740c](https://github.com/goodworkaround/PS-CustomSecurityAttribute/commit/c4e740cf4021bee953a1b7a55069b6a3df430dbb))
+
 ## [1.0.2](https://github.com/goodworkaround/PS-CustomSecurityAttribute/compare/v1.0.1...v1.0.2) (2024-05-13)
 
 
