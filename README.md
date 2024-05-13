@@ -1,6 +1,6 @@
 # Documentation for module CustomSecurityAttribute
 
-A PowerShell module for working with custom security attributes at scale
+A PowerShell module for working with custom security attributes at scale. The module enables easy interaction with custom security attributes, as well as a simplified way of synchronizing HR data to Entra ID custom security attributes, by providing a lookup feature.
 
 | Metadata | Information |
 | --- | --- |

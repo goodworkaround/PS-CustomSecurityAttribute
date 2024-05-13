@@ -23,7 +23,7 @@
     CompanyName       = 'Goodworkaround'
 
     # Description of the functionality provided by this module
-    Description       = 'A PowerShell module for working with custom security attributes at scale'
+    Description       = 'A PowerShell module for working with custom security attributes at scale. The module enables easy interaction with custom security attributes, as well as a simplified way of synchronizing HR data to Entra ID custom security attributes, by providing a lookup feature.'
 
     # Minimum version of the PowerShell engine required by this module
     PowerShellVersion = '7.1'

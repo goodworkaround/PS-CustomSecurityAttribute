@@ -17,7 +17,12 @@ function Connect-CustomSecurityAttribute {
     Process {
         # TODO? Add support for client credentials
         #if($PSCmdlet.ParameterSetName -eq 'Interactive') {
-        Connect-MgGraph -Scopes "CustomSecAttributeAssignment.ReadWrite.All", "User.Read.All" -TenantId $TenantId
+        if($TenantId) {
+            Connect-MgGraph -Scopes "CustomSecAttributeAssignment.ReadWrite.All", "User.Read.All" -TenantId $TenantId
+        } else {
+            Connect-MgGraph -Scopes "CustomSecAttributeAssignment.ReadWrite.All", "User.Read.All"
+        }
+        
         #}
     }
 }
