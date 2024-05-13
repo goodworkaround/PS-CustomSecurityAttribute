@@ -10,7 +10,7 @@ function Assert-CustomSecurityAttributeConnection {
         $context = Get-MgContext
 
         if(-not $context) {
-            Write-Error "Connection to Microsoft Graph API is not established. Please run Connect-MgGraph." -ErrorAction Stop
+            Write-Error "Connection to Microsoft Graph API is not established. Please run Connect-MgGraph or Connect-CustomSecurityAttribute." -ErrorAction Stop
         }
 
         if($context.AuthType -eq "Delegated") {
