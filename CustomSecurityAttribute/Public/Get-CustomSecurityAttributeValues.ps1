@@ -1,3 +1,19 @@
+<#
+.SYNOPSIS
+    Get the custom security attribute values for a specified user.
+
+.DESCRIPTION
+    Get the custom security attribute values for a specified user.
+
+.EXAMPLE
+    Get-CustomSecurityAttributeValues -Key "321"
+
+.EXAMPLE
+    Get-CustomSecurityAttributeValues -ObjectId "12345678-1234-1234-1234-123456789012"
+
+.EXAMPLE
+    Get-CustomSecurityAttributeValues -UserPrincipalName "test@contoso.onmicrosoft.com" -AttributeSet School
+#>
 function Get-CustomSecurityAttributeValues {
     [CmdletBinding(DefaultParameterSetName = 'Cache')]
 

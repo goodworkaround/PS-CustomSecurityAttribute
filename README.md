@@ -13,7 +13,7 @@ A PowerShell module for working with custom security attributes at scale
 ## Build-CustomSecurityAttributeCache
 
 ### SYNOPSIS
-{{ Fill in the Synopsis }}
+Builds a cache of users for fastest speeds when writing custom security attributes.
 
 ### SYNTAX
 
@@ -30,16 +30,23 @@ Build-CustomSecurityAttributeCache -CustomAttribute <String> [-Filter <String>] 
 ```
 
 ### DESCRIPTION
-
+Builds a cache of users for fastest speeds when writing custom security attributes.
 
 ### EXAMPLES
 
-#### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+#### EXAMPLE 1
+```
+Build-CustomSecurityAttributeCache -Attribute userPrincipalName
 ```
 
-{{ Add example description here }}
+Builds a cache of users using the userPrincipalName attribute as key.
+
+#### EXAMPLE 2
+```
+Build-CustomSecurityAttributeCache -CustomAttribute extension_12345678_myCustomAttribute
+```
+
+Builds a cache of users using the applicaton extension property extension_12345678_myCustomAttribute as key.
 
 ### PARAMETERS
 
@@ -50,26 +57,10 @@ PS C:\> {{ Add example code here }}
 Type: String
 Parameter Sets: Well known attribute
 Aliases:
-Accepted values: id, employeeId, userPrincipalName, mail
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-#### -ClearCache
-
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Default value: UserPrincipalName
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -104,6 +95,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+#### -ClearCache
+
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 #### -ProgressAction
 
 
@@ -124,17 +130,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### INPUTS
 
-#### None
 ### OUTPUTS
 
-#### System.Object
 ### NOTES
 
 ### RELATED LINKS
 ## Connect-CustomSecurityAttribute
 
 ### SYNOPSIS
-{{ Fill in the Synopsis }}
+Connects to the Microsoft Graph API with the required permissions for custom security attributes.
+Currently only interactive sign-in, but feel free to Connect-MgGraph with application credentials manually.
 
 ### SYNTAX
 
@@ -147,12 +152,12 @@ Connect-CustomSecurityAttribute [-TenantId <String>] [-ProgressAction <ActionPre
 
 ### EXAMPLES
 
-#### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+#### EXAMPLE 1
+```
+Connect-CustomSecurityAttribute -TenantId "contoso.onmicrosoft.com"
 ```
 
-{{ Add example description here }}
+Connects to the Microsoft Graph API with the required permissions for custom security attributes for the tenant contoso.onmicrosoft.com.
 
 ### PARAMETERS
 
@@ -191,17 +196,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### INPUTS
 
-#### None
 ### OUTPUTS
 
-#### System.Object
 ### NOTES
 
 ### RELATED LINKS
 ## Get-CustomSecurityAttributeValues
 
 ### SYNOPSIS
-{{ Fill in the Synopsis }}
+Get the custom security attribute values for a specified user.
 
 ### SYNTAX
 
@@ -224,36 +227,29 @@ Get-CustomSecurityAttributeValues -UserPrincipalName <String> [-AttributeSet <St
 ```
 
 ### DESCRIPTION
-
+Get the custom security attribute values for a specified user.
 
 ### EXAMPLES
 
-#### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+#### EXAMPLE 1
+```
+Get-CustomSecurityAttributeValues -Key "321"
 ```
 
-{{ Add example description here }}
+#### EXAMPLE 2
+```
+Get-CustomSecurityAttributeValues -ObjectId "12345678-1234-1234-1234-123456789012"
+```
+
+#### EXAMPLE 3
+```
+Get-CustomSecurityAttributeValues -UserPrincipalName "test@contoso.onmicrosoft.com" -AttributeSet School
+```
 
 ### PARAMETERS
 
-#### -AttributeSet
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 #### -Key
-
+Get the values for the specified key from the lookup cache
 
 ```yaml
 Type: String
@@ -268,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 #### -ObjectId
-
+Get the values for the specified user by ObjectId
 
 ```yaml
 Type: String
@@ -283,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 #### -UserPrincipalName
-
+Get the values for the specified user by userPrincipalName
 
 ```yaml
 Type: String
@@ -291,6 +287,21 @@ Parameter Sets: UserPrincipalName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+#### -AttributeSet
+If set, only return the values for the specified attribute set
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -317,17 +328,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### INPUTS
 
-#### None
 ### OUTPUTS
 
-#### System.Object
 ### NOTES
 
 ### RELATED LINKS
 ## Set-CustomSecurityAttributeValues
 
 ### SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the custom security attribute values for a user.
 
 ### SYNTAX
 
@@ -350,48 +359,26 @@ Set-CustomSecurityAttributeValues -UserPrincipalName <String> -AttributeSet <Str
 ```
 
 ### DESCRIPTION
-
+Updates the custom security attribute values for a user.
+The user can be specified by key (for the cache), ObjectId, or UserPrincipalName.
 
 ### EXAMPLES
 
-#### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+#### EXAMPLE 1
+```
+Set-CustomSecurityAttributeValues -Key "321" -AttributeSet School -Values @{Grade = "A"; Teacher = "Mr. Smith"}
 ```
 
-{{ Add example description here }}
+Updates the custom security attribute values for the user with key "321" in the cache with the new values.
+
+#### EXAMPLE 2
+```
+Set-CustomSecurityAttributeValues -ObjectId "12345678-1234-1234-1234-123456789012" -AttributeSet School -Values @{Grade = "A"; Teachers = @("Mr. Smith"; "Ms. Johnson"}
+```
+
+Updates the custom security attribute values for the user with ObjectId "12345678-1234-1234-1234-123456789012" with the new values.
 
 ### PARAMETERS
-
-#### -AttributeSet
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-#### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 #### -Key
 
@@ -429,6 +416,21 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: UserPrincipalName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+#### -AttributeSet
+
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -469,6 +471,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+#### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 #### -ProgressAction
 
 
@@ -489,10 +506,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### INPUTS
 
-#### None
 ### OUTPUTS
 
-#### System.Object
 ### NOTES
 
 ### RELATED LINKS

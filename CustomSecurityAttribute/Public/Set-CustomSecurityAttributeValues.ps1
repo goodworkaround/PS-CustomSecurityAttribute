@@ -1,3 +1,20 @@
+<#
+.SYNOPSIS
+    Updates the custom security attribute values for a user.
+
+.DESCRIPTION
+    Updates the custom security attribute values for a user. The user can be specified by key (for the cache), ObjectId, or UserPrincipalName.
+
+.EXAMPLE
+    Set-CustomSecurityAttributeValues -Key "321" -AttributeSet School -Values @{Grade = "A"; Teacher = "Mr. Smith"}
+
+    Updates the custom security attribute values for the user with key "321" in the cache with the new values.
+
+.EXAMPLE
+    Set-CustomSecurityAttributeValues -ObjectId "12345678-1234-1234-1234-123456789012" -AttributeSet School -Values @{Grade = "A"; Teachers = @("Mr. Smith"; "Ms. Johnson"}
+
+    Updates the custom security attribute values for the user with ObjectId "12345678-1234-1234-1234-123456789012" with the new values.
+#>
 function Set-CustomSecurityAttributeValues {
     [CmdletBinding(DefaultParameterSetName = 'Cache', SupportsShouldProcess = $true)]
 

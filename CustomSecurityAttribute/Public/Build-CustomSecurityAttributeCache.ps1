@@ -1,3 +1,20 @@
+<#
+.SYNOPSIS
+    Builds a cache of users for fastest speeds when writing custom security attributes.
+
+.DESCRIPTION
+    Builds a cache of users for fastest speeds when writing custom security attributes.
+
+.EXAMPLE
+    Build-CustomSecurityAttributeCache -Attribute userPrincipalName
+
+    Builds a cache of users using the userPrincipalName attribute as key.
+
+.EXAMPLE
+    Build-CustomSecurityAttributeCache -CustomAttribute extension_12345678_myCustomAttribute
+
+    Builds a cache of users using the applicaton extension property extension_12345678_myCustomAttribute as key.
+#>
 function Build-CustomSecurityAttributeCache {
     [CmdletBinding(DefaultParameterSetName = "Well known attribute")]
 
