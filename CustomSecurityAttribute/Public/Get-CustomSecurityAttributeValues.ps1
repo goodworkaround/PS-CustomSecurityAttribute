@@ -44,7 +44,8 @@ function Get-CustomSecurityAttributeValues {
     Process {
         if ($PSCmdlet.ParameterSetName -eq 'Cache') {
             if (!$Script:LookupCache.ContainsKey($Key)) {
-                Write-Error "User with key $Key not found in lookup cache." -ErrorAction Stop
+                Write-Error "User with key $Key not found in lookup cache."
+                return
             }
     
             $User = $Script:LookupCache[$Key]

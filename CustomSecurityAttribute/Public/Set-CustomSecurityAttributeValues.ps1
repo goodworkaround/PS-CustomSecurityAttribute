@@ -43,7 +43,8 @@ function Set-CustomSecurityAttributeValues {
         $User = $null
         if ($PSCmdlet.ParameterSetName -eq 'Cache') {
             if (!$Script:LookupCache.ContainsKey($Key)) {
-                Write-Error "User with key $Key not found in lookup cache." -ErrorAction Stop
+                Write-Warning "User with key $Key not found in lookup cache, skipping."
+                return
             }
     
             $User = $Script:LookupCache[$Key]
@@ -53,7 +54,7 @@ function Set-CustomSecurityAttributeValues {
                 Compare-Object ($User.customSecurityAttributes.$AttributeSet.$_ ?? @()) ($Values.$_ ?? @())
             }
 
-            if(!$IsDifferent) {
+            if (!$IsDifferent) {
                 Write-Verbose "No differences found between existing and new values. Skipping update."
                 return
             }
