@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/goodworkaround/PS-CustomSecurityAttribute/compare/v1.0.1...v1.0.2) (2024-05-13)
+
+
+### Bug Fixes
+
+* Fix publishing again... ([60f3196](https://github.com/goodworkaround/PS-CustomSecurityAttribute/commit/60f31969a3eca35c0ff6e6eb5619995b0c20c031))
+
 ## [1.0.1](https://github.com/goodworkaround/PS-CustomSecurityAttribute/compare/v1.0.0...v1.0.1) (2024-05-13)
 
 
