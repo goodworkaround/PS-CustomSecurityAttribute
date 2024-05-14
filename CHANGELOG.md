@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4](https://github.com/goodworkaround/PS-CustomSecurityAttribute/compare/v1.0.3...v1.0.4) (2024-05-14)
+
+
+### Bug Fixes
+
+* Add simpler debugging possiblities ([1e5f0d1](https://github.com/goodworkaround/PS-CustomSecurityAttribute/commit/1e5f0d18b3e99106d5ef61a4d1bf25014a3cb719))
+* Fix bug that occurs when updating cache when no customSecurityAttribute is present on the user on first set ([41e76d3](https://github.com/goodworkaround/PS-CustomSecurityAttribute/commit/41e76d3c2401b88179278258cd178e5c4940c59f))
+
 ## [1.0.3](https://github.com/goodworkaround/PS-CustomSecurityAttribute/compare/v1.0.2...v1.0.3) (2024-05-13)
 
 
