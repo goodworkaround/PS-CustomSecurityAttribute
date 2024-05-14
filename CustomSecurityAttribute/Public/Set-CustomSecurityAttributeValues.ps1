@@ -60,6 +60,9 @@ function Set-CustomSecurityAttributeValues {
             }
 
             # Update cache
+            if(!$User.customSecurityAttributes) {
+                $User.customSecurityAttributes = @{}
+            }
             $User.customSecurityAttributes.$AttributeSet = $Values
 
             $uri = "https://graph.microsoft.com/beta/users/$($User.id)"

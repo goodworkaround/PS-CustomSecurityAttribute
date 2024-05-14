@@ -59,10 +59,10 @@ function Build-CustomSecurityAttributeCache {
                 foreach ($user in $response.value) {
                     # Determine keys
                     $keys = @()
-                    if ($PSCmdlet.ParameterSetName -eq "Well known attribute" -and $user.$Attribute) {
+                    if ((!$PSCmdlet -or $PSCmdlet.ParameterSetName -eq "Well known attribute") -and $user.$Attribute) {
                         $keys = $user.$Attribute
                     }
-                    elseif ($PSCmdlet.ParameterSetName -eq "Custom attribute" -and $user.$CustomAttribute) {
+                    elseif ((!$PSCmdlet -or $PSCmdlet.ParameterSetName -eq "Custom attribute") -and $user.$CustomAttribute) {
                         $keys = $user.$CustomAttribute
                     }
                     
